@@ -8,22 +8,16 @@ const API_URL = "http://www.omdbapi.com?apikey=b6003d8a";
 
 const App = () => {
   const [movies, setMovies] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState("spider");
 
   useEffect(()=>{
-    searchMovies('home');
-  }, []);
+    searchMovies(searchTerm);
+  }, [searchTerm]);
 
   const searchMovies = async (title) => {
     const response = await fetch(`${API_URL}&s=${title}`);
     const data     = await response.json();
     setMovies(data.Search);
-  }
-
-  const keyPressHandler = (e) => {
-    if (e.key === 'Enter') {
-      searchMovies(searchTerm);
-    }
   }
 
   return (
@@ -35,7 +29,6 @@ const App = () => {
         onChange={ (e)=> setSearchTerm(e.target.value)} 
         type="text" value ={searchTerm} 
         placeholder="Search Movies"
-        onKeyPress={ keyPressHandler}
         />
     
         <img 
