@@ -1,2 +1,2 @@
 # fetch-API-react
-Project Live URL: https://api-fetch-in-react.netlify.app/
+A small React project with API data fetch from a movie website.
